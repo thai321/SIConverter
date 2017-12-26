@@ -1,4 +1,6 @@
 class Units::SiController < ApplicationController
+  include SiConversion
+
   def index
     if !params[:units] || params[:units].length == 0
       render json: { error: "Units params is missing or empty" }
