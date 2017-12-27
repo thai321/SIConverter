@@ -18,6 +18,15 @@ RSpec.describe Units::SiController, type: :controller do
       end
     end
 
+    context "when given invalid units params" do
+      it "return an object with Invalid Input error" do
+        get :index, params: { units: "degree/mina" }
+        json_response = JSON.parse(response.body)
+
+        expect(json_response["error"]).to eq("Invalid Input")
+      end
+    end
+
     context "when given a units params of empty string" do
       it "return an object with correct unit_name and multiplication_factor" do
         get :index, params: { units: "" }
@@ -27,12 +36,12 @@ RSpec.describe Units::SiController, type: :controller do
       end
     end
 
-    context "when given invalid units params" do
-      it "return an object with Invalid Input error" do
-        get :index, params: { units: "degree/mina" }
+    context "when given a valid units params" do
+      it "return an object with correct unit_name and multiplication_factor" do
+        get :index, params: { units: "degree/minute" }
         json_response = JSON.parse(response.body)
 
-        expect(json_response["error"]).to eq("Invalid Input")
+        expect(json_response["multiplication_factor"]).to eq(0.00029088820867)
       end
     end
 

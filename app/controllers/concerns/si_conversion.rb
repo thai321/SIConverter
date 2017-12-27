@@ -2,6 +2,7 @@ module SiConversion
 
   class SiUnitConversion
     include InfixToPostfix
+    include SiEvaluator
 
     attr_reader :si_string, :si_counter_part, :num_decimal, :expression
 
@@ -24,7 +25,7 @@ module SiConversion
       else
         return {
           unit_name: "A name",
-          multiplication_factor: 7
+          multiplication_factor: evaluate_postfix
         }
       end
     end
