@@ -133,6 +133,8 @@ SiNameSymbol.create(name: "tonne", symbol: "t", si_type: "mass", si_unit_id: ton
 - It gets si counter part which create a hash with its keys as name and symbol, and values as unit and factor. The logic can be found in the method `si_unit_to_hash` in [app/controllers/concerns/si_conversion.rb][si_conversion]
 - It checks whether the given input is valid. If the given input is valid, then it evaluates the postfix expression, and get the unit names. Assign them to an json object with **unit_names** and **multiplication_factor**. The logic for **evaluate the postfix order** and get the **unit names** can be found in: [app/controllers/concerns/si_evaluator.rb][si_evaluator]
 
+-----
+
 ## Testing
 - Run test: `bundle exec rspec`
     - Test can be found in the rspec folder:
