@@ -11,9 +11,16 @@ module SiConversion
     end
 
     # Create si_counter_part with its keys as name and symbol,
-    # and values as unit and factor
+    # and values as unit and factor.
+    # Time: O(n), space: O(n), assume n is the length of si_string
     def get_si_counter_part
       @si_counter_part = si_unit_to_hash
+    end
+
+    # Check whether the given si_string contain a parenthesis
+    # Time: O(n), space: O(1), assume n is the length of si_string
+    def check_for_parenthesis
+      @si_string =~ /\(/ ? true : false
     end
 
     private

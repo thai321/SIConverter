@@ -30,4 +30,16 @@ RSpec.describe "Concerns::SiConversion" do
       expect(si_unit.si_counter_part.length).to eq(17)
     end
   end
+
+  context "check_for_parenthesis" do
+    it "return true if given units params contain parenthesis" do
+      si_unit = SiConversion::SiUnitConversion.new("(degree/min)")
+      expect(si_unit.check_for_parenthesis).to be(true)
+    end
+
+    it "return false if given units params contain parenthesis" do
+      si_unit = SiConversion::SiUnitConversion.new("degree/min")
+      expect(si_unit.check_for_parenthesis).to be(false)
+    end
+  end
 end
