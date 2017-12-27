@@ -163,7 +163,7 @@ SiNameSymbol.create(name: "tonne", symbol: "t", si_type: "mass", si_unit_id: ton
 
 ## Complexity analysis
 - Assume **N** is length of the input or **units params**
-- Assume **K** is total number of name/symbol, and si units (factor, unit_name) from the database ([seed data][seed]). It's about **18** of them.
+- Assume **K** is total number of name/symbol, and si units (factor, unit_name) from the database ([seed data][seed]). It's about **18** of them. 
 
 | Method   |     Description      |  Time | Space |
 |----------|:-------------:|------:| ------:|
