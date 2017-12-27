@@ -129,7 +129,7 @@ SiNameSymbol.create(name: "tonne", symbol: "t", si_type: "mass", si_unit_id: ton
 ------
 
 [si_conversion]: app/controllers/concerns/si_conversion.rb
-[infix_to_postfix]: app/controllers/concerns/si_conversion.rb
+[infix_to_postfix]: app/controllers/concerns/infix_to_postfix.rb
 [si_evaluator]: app/controllers/concerns/si_evaluator.rb
 
 ## Implementation
