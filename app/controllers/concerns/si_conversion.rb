@@ -1,13 +1,21 @@
 module SiConversion
 
   class SiUnitConversion
+    include InfixToPostfix
 
-    attr_reader :si_string, :si_counter_part, :num_decimal
+    attr_reader :si_string, :si_counter_part, :num_decimal, :expression
 
     def initialize(si_string="", num_decimal=14)
-      @si_string = si_string
+      @si_string = si_string # params[:units]
       @num_decimal = num_decimal
+      @expression = [] # Array of postfix expression
       @si_counter_part = Hash.new
+    end
+
+    # Return an array of postfix order
+    # Time: O(n), space: O(n), assume n is the length of si_string
+    def get_post_fix_expression
+      @expression = infix_to_postfix_without_parenthesis
     end
 
     # Create si_counter_part with its keys as name and symbol,
