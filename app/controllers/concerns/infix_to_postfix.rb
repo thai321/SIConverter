@@ -30,4 +30,41 @@ module InfixToPostfix
     result << operator if !operator.nil? # append the last operator to postfix array
     result
   end
+
+
+  # Return an array of postfix order if the given si_string contains parenthesis
+  # Ex: "degree*(ha/minute)*(L*d)" -> ["degree", "ha", "minute", "/", "*", "L", "d", "*", "*"]
+  # Time: O(n), space: O(n), assume n is the length of si_string
+  def infix_to_postfix_with_parenthesis
+    result = [] # An array of postfix order
+    op_stack = [] # Keep track of the operators
+    current = "" # Keep track of the current name of symbol
+
+    @si_string.chars.each do |char|
+      next if char == " " # skip if the character is a white space
+
+      # Handles the case if the character is an operator, or open parenthesis
+      if (["/", "*", "("].include?(char))
+        op_stack << char
+        result << current if current.length > 0
+        current = ""
+
+      # Handles the case if the character is close parenthesis
+      elsif char == ")"
+        result << current if current.length > 0
+        current = "" # Reset the current to ""
+
+        result << op_stack.pop until op_stack.last == "("
+        op_stack.pop
+
+        result << op_stack.pop if !op_stack.empty? && op_stack.last != "("
+      else
+        current += char # Append the character to the current (name or symbol)
+      end
+    end
+
+    result << current if current.length > 0 # append the last name of symbol to postfix array
+    result << op_stack.pop until op_stack.empty? # append the remainder operators to postfix array
+    result
+  end
 end

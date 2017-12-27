@@ -15,7 +15,11 @@ module SiConversion
     # Return an array of postfix order
     # Time: O(n), space: O(n), assume n is the length of si_string
     def get_post_fix_expression
-      @expression = infix_to_postfix_without_parenthesis
+      if check_for_parenthesis
+        @expression = infix_to_postfix_with_parenthesis
+      else
+        @expression = infix_to_postfix_without_parenthesis
+      end
     end
 
     # Create si_counter_part with its keys as name and symbol,
