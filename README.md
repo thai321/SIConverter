@@ -48,6 +48,28 @@
 [concerns]: spec/controllers/concerns
 
 -------
+## Features
+- Edge cases:
+  - Given no units params, would yield:
+    ```json
+    {
+      "error": "Units params is missing or empty"
+    }
+    ```
+  - Invalid input:
+    ```json
+    {
+      "error": "Invalid Input"
+    }
+    ```
+- The application can handle the following types of input:
+  - The input string contains **empty string**.
+  - The input string contains **white spaces**.
+  - The input string contains **nested parenthesis**.
+  - The input string contains **parenthesis** part and **non-parenthesis** part.
+-----
+
+---------
 ## API endpoint access:
 
 - API URL: https://si-converter.herokuapp.com/units/si?units=
