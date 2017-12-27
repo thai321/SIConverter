@@ -24,7 +24,7 @@ module SiConversion
         }
       else
         return {
-          unit_name: "A name",
+          unit_name: get_unit_names,
           multiplication_factor: evaluate_postfix
         }
       end

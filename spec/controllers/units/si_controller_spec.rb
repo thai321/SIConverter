@@ -41,6 +41,17 @@ RSpec.describe Units::SiController, type: :controller do
         get :index, params: { units: "degree/minute" }
         json_response = JSON.parse(response.body)
 
+        expect(json_response["unit_name"]).to eq("rad/s")
+        expect(json_response["multiplication_factor"]).to eq(0.00029088820867)
+      end
+    end
+
+    context "when given valid units params with white space" do
+      it "return an object with correct unit_name and multiplication_factor" do
+        get :index, params: { units: " degree / minute   " }
+        json_response = JSON.parse(response.body)
+
+        expect(json_response["unit_name"]).to eq("rad/s")
         expect(json_response["multiplication_factor"]).to eq(0.00029088820867)
       end
     end

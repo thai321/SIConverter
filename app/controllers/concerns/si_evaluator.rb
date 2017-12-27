@@ -23,4 +23,30 @@ module SiEvaluator
 
     nums.pop.round(@num_decimal)
   end
+
+
+  # Return a unit names.
+  # "degree*ha/minute" --> "rad*m^2/s"
+  # Time: O(n), space: O(1), Assume n is the length of si_string
+  def get_unit_names
+    units = ""
+    current = ""
+
+    @si_string.chars.each do |char|
+      next if char == " " # Skip if the character is a white space
+
+      # Handles the case if the character is an operator "*", "/", "(", or ")"
+      if ["/", "*", "(", ")"].include?(char)
+        units += @si_counter_part[current][:unit] if current.length > 0
+        units += char
+        current = "" # Reset the current to ""
+      else # Append the character to the current (name or symbol)
+        current += char
+      end
+    end
+
+    # append the last unit from current (name, or symbol)
+    units += @si_counter_part[current][:unit] if current.length > 0
+    units
+  end
 end
