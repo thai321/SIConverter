@@ -50,7 +50,9 @@
 -------
 ## API endpoint access:
 
-- API url: https://si-converter.herokuapp.com/units/si?units=
+- API URL: https://si-converter.herokuapp.com/units/si?units=
+
+- https://si-converter.herokuapp.com/units/si?units=[YOUR-INPUT]
 
 
 - **Example**:
@@ -97,7 +99,10 @@
 - belongs_to `:si_unit`
 
 
+[seed]: db/seeds.rb
 #### Seed data:
+- [Link][seed]
+
 ```ruby
 min = SiUnit.create(unit: "s", factor: 60)
 hour = SiUnit.create(unit: "s", factor: 3600)
@@ -121,7 +126,6 @@ SiNameSymbol.create(name: "litre", symbol: "L", si_type: "volume", si_unit_id: l
 SiNameSymbol.create(name: "tonne", symbol: "t", si_type: "mass", si_unit_id: tonne.id)
 ```
 
-
 ------
 
 [si_conversion]: app/controllers/concerns/si_conversion.rb
@@ -135,6 +139,25 @@ SiNameSymbol.create(name: "tonne", symbol: "t", si_type: "mass", si_unit_id: ton
 - It checks whether the given input is valid. If the given input is valid, then it evaluates the postfix expression, and get the unit names. Assign them to an json object with **unit_names** and **multiplication_factor**. The logic for **evaluate the postfix order** and get the **unit names** can be found in: [app/controllers/concerns/si_evaluator.rb][si_evaluator]
 
 -----
+
+## Complexity analysis
+- Assume **N** is length of the input or **units params**
+- Assume **K** is total number of name/symbol, and si units (factor, unit_name) from the database ([seed data][seed]). It's about **18** of them.
+
+| Method   |     Description      |  Time | Space |
+|----------|:-------------:|------:| ------:|
+| [infix_to_postfix_without_parenthesis][infix_to_postfix] |  Return an array of postfix order if the given si_string does not contain parenthesis | O(N)  |  O(N)  |
+| [infix_to_postfix_without_parenthesis][infix_to_postfix] |  Return an array of postfix order if the given si_string contains parenthesis | O(N)  |  O(N)  |
+| [valid_si_string?][si_conversion] |  Check whether the given si_string is the valid input |  O(N) |  O(1) |
+| [check_for_parenthesis][si_conversion] |  Check whether the given si_string contain a parenthesis   |  O(N) |  O(1)  |
+| [si_unit_to_hash][si_conversion] |  Create a hash with its keys as name and symbol, and values as unit and factor   |  O(K) |  O(K)  |
+| [evaluate_postfix][si_evaluator] |  Evaluate the postfix order and return a floating number   |  O(N) |  O(1)  |
+| [get_unit_names][si_evaluator] |  Return a unit names from the given input (units params)   |  O(N) |  O(N)  |
+| Total |  ----   |  O(N + K) |  O(N + K)  |
+
+------
+
+
 
 ## Testing
 - Run test: `bundle exec rspec`

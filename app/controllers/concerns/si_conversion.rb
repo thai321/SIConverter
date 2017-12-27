@@ -49,7 +49,7 @@ module SiConversion
 
     # Create si_counter_part with its keys as name and symbol,
     # and values as unit and factor.
-    # Time: O(n), space: O(n), assume n is the length of si_string
+    # Time: O(18) = O(1), space: O(18) = O(1) 
     def get_si_counter_part
       @si_counter_part = si_unit_to_hash
     end
@@ -78,6 +78,7 @@ module SiConversion
     #  "tonne": { unit: "kg", factor: 1000 },
     #  ...
     # }
+    # Time: O(18) = O(1), space: O(18) = O(1)
     def si_unit_to_hash
       hash = Hash.new
       SiNameSymbol.all.each do |name_symbol|
