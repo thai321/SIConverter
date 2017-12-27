@@ -168,7 +168,7 @@ SiNameSymbol.create(name: "tonne", symbol: "t", si_type: "mass", si_unit_id: ton
 | Method   |     Description      |  Time | Space |
 |----------|:-------------:|------:| ------:|
 | [infix_to_postfix_without_parenthesis][infix_to_postfix] |  Return an array of postfix order if the given si_string does not contain parenthesis | O(N)  |  O(N)  |
-| [infix_to_postfix_without_parenthesis][infix_to_postfix] |  Return an array of postfix order if the given si_string contains parenthesis | O(N)  |  O(N)  |
+| [infix_to_postfix_with_parenthesis][infix_to_postfix] |  Return an array of postfix order if the given si_string contains parenthesis | O(N)  |  O(N)  |
 | [valid_si_string?][si_conversion] |  Check whether the given si_string is the valid input |  O(N) |  O(1) |
 | [check_for_parenthesis][si_conversion] |  Check whether the given si_string contain a parenthesis   |  O(N) |  O(1)  |
 | [si_unit_to_hash][si_conversion] |  Create a hash with its keys as name and symbol, and values as unit and factor   |  O(K) |  O(K)  |
