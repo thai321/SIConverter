@@ -2,6 +2,7 @@
 [![Build Status](https://travis-ci.org/thai321/SIConverter.svg?branch=master)](https://travis-ci.org/thai321/SIConverter)
 
 - Live: https://si-converter.herokuapp.com/
+- Travis CI: https://travis-ci.org/thai321/SIConverter
 
 -----
 
