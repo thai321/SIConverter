@@ -67,7 +67,6 @@
   - The input string contains **white spaces**.
   - The input string contains **nested parenthesis**.
   - The input string contains **parenthesis** part and **non-parenthesis** part.
------
 
 ---------
 ## API endpoint access:
