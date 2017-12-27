@@ -13,7 +13,14 @@ module SiConversion
       @si_counter_part = Hash.new
     end
 
-
+    # Return a json object of unit_name and multiplication_factor.
+    # Produce a string of tokens in postfix order.
+    # Create si_counter_part with its keys as name and symbol,
+    # and values as unit and factor.
+    # Check whether a given si_string is valid:
+    # + Invalid: return { error: "Invalid Input"}
+    # + Valid: return { unit_name: get_unit_names, multiplication_factor: evaluate_postfix }
+    # Time: O(n), space: O(n), assume n is the length of si_string
     def get_result
       get_post_fix_expression
       get_si_counter_part

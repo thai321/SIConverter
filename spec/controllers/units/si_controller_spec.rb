@@ -55,6 +55,5 @@ RSpec.describe Units::SiController, type: :controller do
         expect(json_response["multiplication_factor"]).to eq(0.00029088820867)
       end
     end
-
   end
 end
