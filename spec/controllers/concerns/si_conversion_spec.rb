@@ -47,4 +47,20 @@ RSpec.describe "Concerns::SiConversion" do
       expect(si_unit.check_for_parenthesis).to be(false)
     end
   end
+
+  context "valid_si_string?" do
+    it "return true if given units params contain valid input" do
+      si_unit = SiConversion::SiUnitConversion.new("degree/minute")
+      si_unit.get_si_counter_part
+      si_unit.get_post_fix_expression
+      expect(si_unit.valid_si_string?).to be(true)
+    end
+
+    it "return false if given units params contain Invalid input" do
+      si_unit = SiConversion::SiUnitConversion.new("degree/invalid")
+      si_unit.get_si_counter_part
+      si_unit.get_post_fix_expression
+      expect(si_unit.valid_si_string?).to be(false)
+    end
+  end
 end

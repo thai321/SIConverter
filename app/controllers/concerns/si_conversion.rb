@@ -35,6 +35,16 @@ module SiConversion
       @si_string =~ /\(/ ? true : false
     end
 
+    # Check whether the given si_string is the valid input
+    # Time: O(n), space: O(1), assume n is the length of si_string
+    def valid_si_string?
+      @expression.each do |str|
+        next if ["*", "/"].include?(str)
+        return false if (!@si_counter_part[str])
+      end
+      true
+    end
+
     private
     # Create a hash with its keys as name and symbol,
     # and values as unit and factor
