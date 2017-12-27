@@ -1,3 +1,6 @@
+## SIConverter
+[![Build Status](https://travis-ci.org/thai321/SIConverter.svg?branch=master)](https://travis-ci.org/thai321/SIConverter)
+
 ## Database Schema
 
 
