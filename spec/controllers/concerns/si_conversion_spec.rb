@@ -20,6 +20,11 @@ RSpec.describe "Concerns::SiConversion" do
       expect(si_unit.si_counter_part).to eq({})
       expect(si_unit.si_counter_part.keys.length).to be(0)
     end
+
+    it "has a expression to be an empty array" do
+      expect(si_unit.expression).to be_an(Array)
+      expect(si_unit.expression.length).to eq(0)
+    end
   end
 
   context "get_si_counter_part" do
