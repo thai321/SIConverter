@@ -12,6 +12,23 @@ module SiConversion
       @si_counter_part = Hash.new
     end
 
+
+    def get_result
+      get_post_fix_expression
+      get_si_counter_part
+
+      if !valid_si_string?
+        return {
+          error: "Invalid Input",
+        }
+      else
+        return {
+          unit_name: "A name",
+          multiplication_factor: 7
+        }
+      end
+    end
+
     # Return an array of postfix order
     # Time: O(n), space: O(n), assume n is the length of si_string
     def get_post_fix_expression

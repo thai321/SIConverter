@@ -5,7 +5,10 @@ class Units::SiController < ApplicationController
     if !params[:units] || params[:units].length == 0
       render json: { error: "Units params is missing or empty" }
     else
-      render json: { value: units_params }
+      si_unit = SiUnitConversion.new(units_params.strip)
+      result = si_unit.get_result
+
+      render json: result
     end
   end
 
@@ -13,4 +16,5 @@ class Units::SiController < ApplicationController
   def units_params
     params.require(:units)
   end
+
 end
